@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<h2> Welcome to the number one independent Recipe Creation Company in the world! 
+</br> You'll Find recipes not listed anywhere else - Established in 2019 </h2>
+{% if recipe_list %}
+    <ul>
+        {% for recipe in recipe_list %}
+            <li><a href="{% url 'recipe' recipe.id %}">{{ recipe.title }}</a></li>
+        {% endfor %}
+    </ul>
+    <a href="/add_author">Add a new author</a>
+    <a href="/add_recipe">Add a new recipe</a>
+    <p><a href="/login">Login</a></p>
+    <p><a href="/logout">Logout</a></p>
+{% else %}
+    <p>No recipes are available.</p>
+{% endif %}

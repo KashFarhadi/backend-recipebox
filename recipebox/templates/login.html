@@ -1,0 +1,7 @@
+<h2>Sign in Here</h2>
+<form class "form" method="POST"style="display: flex; flex-direction: column; width: 120px">
+        {% csrf_token %}
+        {{ form }}
+        <br>
+        <input type="submit" value="Sign In">
+    </form>
