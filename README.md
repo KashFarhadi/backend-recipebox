@@ -11,17 +11,13 @@ Fork and clone the project and navigate to that directory
 
 Create and start a a virtual environment
 
-for virtualenv:
-`virtualenv env --no-site-packages
-
-source env/bin/activate`
-
 for pipenv:
-`pipenv -install
-pipenv shell`
+
+`pipenv -install`
+`pipenv shell`
 
 
-python manage.py migrate
+Run `python manage.py migrate`
 
 Create a admin account if you would like to test admin features and access the admin page
 
@@ -33,9 +29,7 @@ Run `python manage.py makemigrations {foldername}`
 
 Run `python manage.py migrate` to push  to the db
 
-Start the django server using 
-
-`python manage.py runserver`
+Start the django server using: `python manage.py runserver`
 
 You can then access the homepage of the app the following web addresses
 `http://127.0.0.1:8000/` 
@@ -53,10 +47,15 @@ You can login as a user at
 
 ## Existing Users 
 
+
 Admin user 
+
 username: kash
+
 password: optix
 
 Regular user 
+
 username: testing 
+
 password: djangoform
