@@ -3,14 +3,27 @@
 </br> You'll Find recipes not listed anywhere else - Established in 2019 </h2>
 {% if recipe_list %}
     <ul>
+
+    {% if request.user.is_authenticated %}
+    <h2>Hello {{request.user}}</h2>
+    {% endif %}
+
         {% for recipe in recipe_list %}
             <li><a href="{% url 'recipe' recipe.id %}">{{ recipe.title }}</a></li>
         {% endfor %}
     </ul>
-    <a href="/add_author">Add a new author</a>
-    <a href="/add_recipe">Add a new recipe</a>
+    <a href="/addauthor">Add a new author</a>
+    <a href="/addrecipe">Add a new recipe</a>
+
+    {% if not request.user.is_authenticated %}
     <p><a href="/login">Login</a></p>
+    <p><a href="/signup">Create Accounts Here</a></p>
+    {% endif %}
+
+    {% if request.user.is_authenticated %}
     <p><a href="/logout">Logout</a></p>
+    {% endif %}
+
 {% else %}
     <p>No recipes are available.</p>
 {% endif %}

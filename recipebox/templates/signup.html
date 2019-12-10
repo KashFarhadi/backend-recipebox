@@ -1,0 +1,9 @@
+<h2>Create an Account Here</h2>
+<form class "form" method="POST"style="display: flex; flex-direction: column; width: 320px">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <br>
+        <input type="submit" value="Sign Up Now!">
+        <p><a href="/">Back to Home</a></p>
+
+    </form>
