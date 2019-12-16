@@ -1,4 +1,4 @@
-from django.shortcuts import get_object_or_404, render
+from django.shortcuts import get_object_or_404, render, redirect
 from django.http import HttpResponse, HttpResponseRedirect
 from recipebox.models import Recipe, Author
 from .forms import AuthorForm, RecipeForm, SignInForm, SignUpForm
@@ -31,7 +31,7 @@ def add_recipe(request):
 
     else:
         form = RecipeForm()
-    return render(request, 'recipe_form.html', {'form': form})
+    return render(request, 'form.html', {'form': form})
 
 @staff_member_required
 def add_author(request):
@@ -43,7 +43,7 @@ def add_author(request):
 
     else:
         form = AuthorForm()
-    return render(request, 'author_form.html', {'form': form})
+    return render(request, 'form.html', {'form': form})
 
 def login_view(request):
     if request.user.is_authenticated:
@@ -58,19 +58,22 @@ def login_view(request):
 
         else:
             form = SignInForm()
-    return render(request, 'login.html', {'form': form})
+    return render(request, 'form.html', {'form': form})
 
-@staff_member_required
+# @staff_member_required
 def signup_view(request):
     if request.method == 'POST':
         form = SignUpForm(request.POST)
         if form.is_valid():
             form.save()
+            username = form.cleaned_data.get('username')
+            password = form.cleaned_data.get('password1')
+            user = authenticate(username=username, password=password)
+            login(request, user)
             return HttpResponseRedirect('/')
- 
     else:
         form = SignUpForm()
-    return render(request, 'signup.html', {'form': form})
+    return render(request, 'form.html', {'form': form})
 
 def logout_view(request):
     logout(request)
