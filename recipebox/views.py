@@ -60,7 +60,7 @@ def login_view(request):
             form = SignInForm()
     return render(request, 'form.html', {'form': form})
 
-# @staff_member_required
+@staff_member_required
 def signup_view(request):
     if request.method == 'POST':
         form = SignUpForm(request.POST)
