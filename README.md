@@ -11,7 +11,8 @@ Fork, Clone, Navigate to directory
 Create and start a a virtual environment
 
 for pipenv:
-`pipenv -install`
+`pipenv install`
+
 `pipenv shell`
 
 `python manage.py makemigrations {foldername}` 
